@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=13 lang=java
+ * @lc app=leetcode id=13 lang=golang
  *
  * [13] Roman to Integer
  *
@@ -79,9 +79,29 @@
  * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
  * 
  */
-class Solution {
-    public int romanToInt(String s) {
-        
-    }
+func romanToInt(s string) int {
+    roman_int := map[rune]int{
+		'I':1,
+		'V':5,
+		'X':10,
+		'L':50,
+		'C':100,
+		'D':500,
+		'M':1000,
+	}
+	sum := 0
+	for i := 0;i<len(s);i++{
+		if i < len(s)-1{
+			if roman_int[rune(s[i])] >= roman_int[rune(s[i+1])]{
+				sum += roman_int[rune(s[i])]
+			}else{
+				sum += roman_int[rune(s[i+1])]-roman_int[rune(s[i])]
+				i++
+			}
+		}else{
+			sum += roman_int[rune(s[i])]
+		}
+	}
+	return sum
 }
 

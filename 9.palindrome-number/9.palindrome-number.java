@@ -52,24 +52,36 @@ import java.util.Deque;
  */
 class Solution {
     public boolean isPalindrome(int x) {
-        if (x < 0) {
-            return false;
-        }
-        Deque<Integer> solution = new ArrayDeque<Integer>();
-        // ArrayList<Integer> input = new ArrayList<Integer>();
-        int temp = 0;
-        while (x != 0) {
-            temp = x % 10;
-            solution.addFirst(temp);
-            x /= 10;
-        }
-        while (solution.size() > 1) {
-            if (solution.getFirst() == solution.getLast()) {
-                solution.removeFirst();
-                solution.removeLast();
-            } else {
-                return false;
-            }
+        // if (x < 0) {
+        //     return false;
+        // }
+        // Deque<Integer> solution = new ArrayDeque<Integer>();
+        // // ArrayList<Integer> input = new ArrayList<Integer>();
+        // int temp = 0;
+        // while (x != 0) {
+        //     temp = x % 10;
+        //     solution.addFirst(temp);
+        //     x /= 10;
+        // }
+        // while (solution.size() > 1) {
+        //     if (solution.getFirst() == solution.getLast()) {
+        //         solution.removeFirst();
+        //         solution.removeLast();
+        //     } else {
+        //         return false;
+        //     }
+        // }
+        // return true;
+        if (x < 0) return false;
+        int div = 1;
+        //
+        while (x / div >= 10) div *= 10;
+        while (x > 0) {
+            int left = x / div;
+            int right = x % 10;
+            if (left != right) return false;
+            x = (x % div) / 10;
+            div /= 100;
         }
         return true;
     }

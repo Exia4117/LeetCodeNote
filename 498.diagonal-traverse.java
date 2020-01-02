@@ -73,6 +73,7 @@ class Solution {
         for (int i = 0; i < reArray.size(); i++) {
             re[i] = reArray.get(i);
         }
+        // int[] re = reArray.toArray(new int[matrix.length * matrix[0].length]);
         return re;
     }
 

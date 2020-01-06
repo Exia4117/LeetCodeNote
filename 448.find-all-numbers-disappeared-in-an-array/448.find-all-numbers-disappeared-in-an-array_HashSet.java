@@ -44,10 +44,10 @@ class Solution {
             return re;
         }
         Set<Integer> help = new HashSet<>();
-        help.add(nums[0]);
-        for (int i = 1; i < nums.length; i++) {
-            if (help.contains(nums[i]))
-                continue;
+        // help.add(nums[0]);
+        for (int i = 0; i < nums.length; i++) {
+            // if (help.contains(nums[i]))
+            // continue;
             help.add(nums[i]);
         }
         for (int j = 1; j <= nums.length; j++) {
